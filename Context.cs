@@ -19,7 +19,7 @@ public class Context : DbContext
     public DbSet<Service> Services { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite(@"Data Source=..\..\..\..\курсовая\bin\Debug\net8.0-windows\airplane.db");
+        optionsBuilder.UseSqlite(@"Data Source=airplane.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

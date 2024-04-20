@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YbzdsIO803TPESmPtb+MHDni2OowJZFuFiK4uID1P5o3zbTACMjxKmta9hcPvIE13z3VesQqCVB/hVnwfNa/PA==",
+  "dgSpecHash": "0qcv73MUWPcuChbAQsD5ydtzEggubSsqxGTZnM8UvTcRZtEDvukCrSvJnMMvRaO8X4tUB2SCb9lw3/i7jyvfvQ==",
   "success": true,
-  "projectFilePath": "H:\\Учёба\\курсовая\\Airport.csproj",
+  "projectFilePath": "H:\\Учёба\\3 курс\\2\\Курсовая\\AirportManager\\Airport.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mrsam\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.0\\microsoft.data.sqlite.core.8.0.0.nupkg.sha512",
     "C:\\Users\\mrsam\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
