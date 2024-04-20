@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "H:\\\u0423\u0447\u0451\u0431\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D5972F9E-4953-4DCE-89E1-1E1FB68A2307}|Airport.csproj|h:\\\u0443\u0447\u0451\u0431\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5972F9E-4953-4DCE-89E1-1E1FB68A2307}|Airport.csproj|solutionrelative:context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Context.cs",
+              "DocumentMoniker": "H:\\\u0423\u0447\u0451\u0431\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\Context.cs",
+              "RelativeDocumentMoniker": "Context.cs",
+              "ToolTip": "H:\\\u0423\u0447\u0451\u0431\u0430\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\Context.cs",
+              "RelativeToolTip": "Context.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:49:16.541Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
