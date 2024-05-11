@@ -40,41 +40,41 @@ class NearestFlightsReport : IReport
         return "Ближайшие рейсы";
     }
 }
-class DestinationReport : IReport
-{
-    private Context context;
-    private MainForm mainForm;
-    public DestinationReport(Context context, MainForm mainForm)
-    {
-        this.context = context;
-        this.mainForm = mainForm;
-    }
+//class DestinationReport : IReport
+//{
+//    private Context context;
+//    private MainForm mainForm;
+//    public DestinationReport(Context context, MainForm mainForm)
+//    {
+//        this.context = context;
+//        this.mainForm = mainForm;
+//    }
 
-    public void Report(ReportForm reportForm)
-    {
-        var airport = mainForm.comboBoxAirports.SelectedItem as Airport;
-        var query = context.Destinations
-           .Include(x => x.airplane)
-           .Include(x => x.start_airport)
-           .Include(x => x.end_airport)
-           .OrderBy(x => x.FlightDate)
-           .Where(x => !x.IsFlying && x.end_airportid == airport.id)
-           .Select(x => new
-           {
-               Самолет = x.airplane,
-               Начальный_Аэропорт = x.start_airport,
-               Конечный_Аэропорт = x.end_airport,
-               Часов_Полета = x.flight_hours,
-               Дата_Полета = x.FlightDate
-           });
-        var result = query.ToList();
-        reportForm.dataGridView1.DataSource = result;
-    }
-    public override string ToString()
-    {
-        return "Список маршрутов по конечному пункту";
-    }
-}
+//    public void Report(ReportForm reportForm)
+//    {
+//        var airport = mainForm.comboBoxAirports.SelectedItem as Airport;
+//        var query = context.Destinations
+//           .Include(x => x.airplane)
+//           .Include(x => x.start_airport)
+//           .Include(x => x.end_airport)
+//           .OrderBy(x => x.FlightDate)
+//           .Where(x => !x.IsFlying && x.end_airportid == airport.id)
+//           .Select(x => new
+//           {
+//               Самолет = x.airplane,
+//               Начальный_Аэропорт = x.start_airport,
+//               Конечный_Аэропорт = x.end_airport,
+//               Часов_Полета = x.flight_hours,
+//               Дата_Полета = x.FlightDate
+//           });
+//        var result = query.ToList();
+//        reportForm.dataGridView1.DataSource = result;
+//    }
+//    public override string ToString()
+//    {
+//        return "Список маршрутов по конечному пункту";
+//    }
+//}
 class TheMostFrequentlyDestinations : IReport
 {
     private Context context;
@@ -85,7 +85,7 @@ class TheMostFrequentlyDestinations : IReport
 
     public void Report(ReportForm reportForm)
     {
-        var query = context.Airports
+        var query = context.Airports.Where(x => x.address != "г.Москва")
            .OrderByDescending(x => x.Count)
            .Select(x => new
            {

@@ -11,11 +11,15 @@ public class Airplane
     public string name { get; set; }
     public List<Destination> destination { get; set; }
     public bool isFree { get; set; }
-    public Airplane(string name, int airportid, bool isFree)
+    public double Speed { get; set; }
+    public int MaxDistance { get; set; }
+    public Airplane(string name, int airportid, bool isFree, double speed, int maxDistance)
     {
         this.name = name;
         this.airportid = airportid;
         this.isFree = isFree;
+        Speed = speed;
+        MaxDistance = maxDistance;
     }
     public override string ToString()
     {

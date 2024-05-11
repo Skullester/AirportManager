@@ -36,10 +36,8 @@ public partial class MainForm : Form
         Context = new();
         thread = new(CheckFlight) { Name = "Second" };
         thread.Start();
-        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), new DestinationReport(Context, this), new TheMostFrequentlyDestinations(Context)]);
+        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), /*new DestinationReport(Context, this)*/ new TheMostFrequentlyDestinations(Context)]);
         comboBoxReport.SelectedValueChanged += OnReportChanged;
-        var arr = Context.Airports.ToArray();
-        comboBoxAirports.Items.AddRange(arr);
         foreach (var item in Controls)
         {
             if (item is ComboBox cb)
@@ -50,10 +48,6 @@ public partial class MainForm : Form
     private void OnReportChanged(object? obj, EventArgs e)
     {
         report = (comboBoxReport.SelectedItem as IReport)!;
-        bool isDestination = report is DestinationReport;
-        label2.Visible = isDestination;
-        comboBoxAirports.Visible = isDestination;
-
     }
 
     private void CheckFlight()
@@ -67,7 +61,7 @@ public partial class MainForm : Form
                 if (!dest.IsFlying && dest.FlightDate.Minute == DateTime.Now.Minute && dest.FlightDate.Hour == DateTime.Now.Hour && dest.FlightDate.Day == DateTime.Now.Day)
                 {
                     var airportEnd = dest.end_airport;
-                    airportEnd.Count++;
+
                     dest.IsFlying = true;
                     Context.Destinations.Update(dest);
                     dest.airplane.isFree = false;
@@ -91,6 +85,11 @@ public partial class MainForm : Form
 
     private void MakeReport(object sender, EventArgs e)
     {
+        if (Context.Destinations.Count() == 0)
+        {
+            MessageBox.Show("Отчетность пуста!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
         var reportForm = new ReportForm();
         report.Report(reportForm);
         reportForm.ShowDialog();

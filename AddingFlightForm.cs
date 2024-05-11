@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using System.ComponentModel;
+using System.ComponentModel.Design;
 
 namespace Airport;
 
@@ -13,16 +14,28 @@ public partial class AddingFlightForm : Form
         InitializeTables();
         InitializeControls();
         this.mainForm = mainForm;
-    }
+        comboBoxIn.SelectedValueChanged += OnComboBoxIn;
 
+    }
+    private void OnComboBoxIn(object? sender, EventArgs e)
+    {
+
+    }
     private void InitializeControls()
     {
         var airplanes = context.Airplanes.Where(x => x.isFree).ToArray();
-        var airportsIn = context.Airports.ToArray();
+        var airportsIn = context.Airports.Where(x => x.address != "г.Москва").ToArray();
+        var airportsOut = context.Airports.Where(x => x.address == "г.Москва").ToArray();
         comboBox1.Items.AddRange(airplanes);
-        comboBoxOut.Items.AddRange(airportsIn);
+        comboBoxOut.Items.AddRange(airportsOut);
         comboBoxIn.Items.AddRange(airportsIn);
-        var maxDate = context.Destinations.Select(x => x.FlightDate).Max();
+        DateTime maxDate;
+        if (context.Destinations.Count() == 0)
+        {
+            maxDate = DateTime.Now.AddHours(-1).AddMinutes(1);
+        }
+        else maxDate = context.Destinations.Select(x => x.FlightDate).Max();
+
         var dates = new object[]
         {
             maxDate.AddHours(1),
@@ -44,8 +57,11 @@ public partial class AddingFlightForm : Form
         {
             Самолет = pl.name,
             Аэропорт = port.name,
-            Свободен = pl.isFree
+            Свободен = pl.isFree,
+            Скорость = pl.Speed + "км/ч",
+            Максимальное_Расстояние = pl.MaxDistance + "км"
         });
+
         var result = query.ToList();
         dataGridViewAirplanes.DataSource = result;
 
@@ -53,35 +69,11 @@ public partial class AddingFlightForm : Form
         {
             Название = port.name,
             ИНН = port.INN,
-            Адрес = port.address
+            Адрес = port.address,
+            Расстояние = port.Distance + "км"
         });
         var result2 = query2.ToList();
         dataGridViewAirports.DataSource = result2;
-
-        var query3 = context.Positions.Select(pos => new
-        {
-            Должность = pos.name
-        });
-        var result3 = query3.ToList();
-        dataGridViewPositions.DataSource = result3;
-
-        var query4 = context.Personal.Select(e => new
-        {
-            ФИО = e.fullname,
-            ИНН = e.INN,
-            Должность = e.position,
-            Служба = e.Service.name,
-            Аэропорт = e.Airport.name
-        });
-        var result4 = query4.ToList();
-        dataGridViewPersonal.DataSource = result4;
-
-        var query5 = context.Services.Select(e => new
-        {
-            Служба = e.name,
-        });
-        var result5 = query5.ToList();
-        dataGridViewServices.DataSource = result5;
     }
 
     private void Add(object sender, EventArgs e)
@@ -90,9 +82,14 @@ public partial class AddingFlightForm : Form
         var inFlight = comboBoxIn.SelectedItem as Airport;
         var airplane = comboBox1.SelectedItem as Airplane;
         var date = (DateTime)comboBoxDate.SelectedItem!;
-        if (outFlight.address == inFlight.address)
-            throw new ArgumentException("Города должны отличаться!");
-        var newDest = new Destination(airplane.id, outFlight.id, inFlight.id, 10, date);
+        inFlight.Count++;
+        var newDest = new Destination(airplane.id, outFlight.id, inFlight.id, (byte)(inFlight.Distance / airplane.Speed * 2), date);
+        if (airplane.MaxDistance < inFlight.Distance)
+        {
+            MessageBox.Show("Максимальное расстояние выбранного самолета должно быть меньше точки назначения!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
         context.Destinations.Add(newDest);
         context.SaveChanges();
         MessageBox.Show("Успешно!");
