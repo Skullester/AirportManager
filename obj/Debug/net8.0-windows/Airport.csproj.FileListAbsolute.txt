@@ -251,8 +251,6 @@ H:\Учёба\3 курс\2\Курсовая\AirportManager\bin\Debug\net8.0-wind
 H:\Учёба\3 курс\2\Курсовая\AirportManager\bin\Debug\net8.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 H:\Учёба\3 курс\2\Курсовая\AirportManager\bin\Debug\net8.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 H:\Учёба\3 курс\2\Курсовая\AirportManager\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
-H:\Учёба\3 курс\2\Курсовая\AirportManager\bin\Debug\net8.0-windows\ClassLibrary1.dll
-H:\Учёба\3 курс\2\Курсовая\AirportManager\bin\Debug\net8.0-windows\ClassLibrary1.pdb
 H:\Учёба\3 курс\2\Курсовая\AirportManager\obj\Debug\net8.0-windows\Airport.csproj.AssemblyReference.cache
 H:\Учёба\3 курс\2\Курсовая\AirportManager\obj\Debug\net8.0-windows\Airport.AddingFlightForm.resources
 H:\Учёба\3 курс\2\Курсовая\AirportManager\obj\Debug\net8.0-windows\Airport.MainForm.resources

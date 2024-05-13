@@ -5,26 +5,37 @@ public partial class MainForm : Form
     private IReport report = null!;
     private Context Context;
     private Thread thread;
+
     public MainForm()
     {
         InitializeComponent();
         Initialize();
         InitializeTables();
+        foreach (var item in Context.Destinations)
+        {
+            if (item.FlightDate < DateTime.Now)
+            {
+                item.IsFlying = true;
+                Context.Destinations.Update(item);
+                Context.SaveChanges();
+                InitializeTables();
+            }
+        }
     }
 
     public void InitializeTables()
     {
         var query = from dest in Context.Destinations
-                    join airplane in Context.Airplanes on dest.airplaneid equals airplane.id
-                    select new
-                    {
-                        Самолет = dest.airplane,
-                        Часы_Полета = dest.flight_hours,
-                        Начальный_Аэропорт = dest.start_airport,
-                        Конечный_Аэропорт = dest.end_airport,
-                        Дата_Полета = dest.FlightDate,
-                        В_Полете = dest.IsFlying
-                    };
+            join airplane in Context.Airplanes on dest.airplaneid equals airplane.id
+            select new
+            {
+                Самолет = dest.airplane,
+                Часы_Полета = dest.flight_hours,
+                Начальный_Аэропорт = dest.start_airport,
+                Конечный_Аэропорт = dest.end_airport,
+                Дата_Полета = dest.FlightDate,
+                В_Полете = dest.IsFlying
+            };
         var result = query.ToList();
         if (Thread.CurrentThread.Name == "Second")
             dataGridViewDestinations.BeginInvoke(() => dataGridViewDestinations.DataSource = result);
@@ -36,7 +47,10 @@ public partial class MainForm : Form
         Context = new();
         thread = new(CheckFlight) { Name = "Second" };
         thread.Start();
-        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), /*new DestinationReport(Context, this)*/ new TheMostFrequentlyDestinations(Context)]);
+        comboBoxReport.Items.AddRange([
+            new NearestFlightsReport(Context), /*new DestinationReport(Context, this)*/
+            new TheMostFrequentlyDestinations(Context)
+        ]);
         comboBoxReport.SelectedValueChanged += OnReportChanged;
         foreach (var item in Controls)
         {
@@ -58,13 +72,14 @@ public partial class MainForm : Form
             var destinations = Context.Destinations.ToList();
             foreach (var dest in destinations)
             {
-                if (!dest.IsFlying && dest.FlightDate.Minute == DateTime.Now.Minute && dest.FlightDate.Hour == DateTime.Now.Hour && dest.FlightDate.Day == DateTime.Now.Day)
+                if (!dest.IsFlying && dest.FlightDate.Minute == DateTime.Now.Minute &&
+                    dest.FlightDate.Hour == DateTime.Now.Hour && dest.FlightDate.Day == DateTime.Now.Day)
                 {
                     var airportEnd = dest.end_airport;
 
                     dest.IsFlying = true;
                     Context.Destinations.Update(dest);
-                    dest.airplane.isFree = false;
+                    // dest.airplane.isFree = false;
                     Context.Airplanes.Update(dest.airplane);
                     Context.Airports.Update(airportEnd);
                     Context.SaveChanges();
@@ -73,6 +88,7 @@ public partial class MainForm : Form
             }
         }
     }
+
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         thread.Interrupt();
@@ -85,11 +101,12 @@ public partial class MainForm : Form
 
     private void MakeReport(object sender, EventArgs e)
     {
-        if (Context.Destinations.Count() == 0)
+        if (!Context.Destinations.Any())
         {
             MessageBox.Show("Отчетность пуста!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
+
         var reportForm = new ReportForm();
         report.Report(reportForm);
         reportForm.ShowDialog();
