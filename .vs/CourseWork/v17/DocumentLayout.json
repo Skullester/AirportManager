@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "H:\\\u0423\u0447\u0451\u0431\u0430\\3 \u043A\u0443\u0440\u0441\\2\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\AirportManager\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D5972F9E-4953-4DCE-89E1-1E1FB68A2307}|Airport.csproj|h:\\\u0443\u0447\u0451\u0431\u0430\\3 \u043A\u0443\u0440\u0441\\2\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\airportmanager\\airport.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{D5972F9E-4953-4DCE-89E1-1E1FB68A2307}|Airport.csproj|solutionrelative:airport.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +23,18 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Airport",
+              "DocumentMoniker": "H:\\\u0423\u0447\u0451\u0431\u0430\\3 \u043A\u0443\u0440\u0441\\2\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\AirportManager\\Airport.csproj",
+              "RelativeDocumentMoniker": "Airport.csproj",
+              "ToolTip": "H:\\\u0423\u0447\u0451\u0431\u0430\\3 \u043A\u0443\u0440\u0441\\2\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\AirportManager\\Airport.csproj",
+              "RelativeToolTip": "Airport.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-20T18:21:54.776Z",
+              "EditorCaption": ""
             }
           ]
         }
