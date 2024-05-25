@@ -17,15 +17,15 @@ class NearestFlightsReport : IReport
     {
         var query = context.Destinations
             .Include(x => x.airplane)
-            .Include(x => x.start_airport)
-            .Include(x => x.end_airport)
+    //        .Include(x => x.start_airport)
+            //.Include(x => x.end_airport)
             .OrderBy(x => x.FlightDate)
             .Where(x => !x.IsFlying)
             .Select(x => new
             {
                 Самолет = x.airplane,
-                Начальный_Аэропорт = x.start_airport,
-                Конечный_Аэропорт = x.end_airport,
+        //        Начальный_Аэропорт = x.start_airport,
+             //   Конечный_Аэропорт = x.end_airport,
                 Часов_Полета = x.flight_hours,
                 Дата_Полета = x.FlightDate
             }

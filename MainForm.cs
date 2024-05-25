@@ -31,8 +31,8 @@ public partial class MainForm : Form
             {
                 Самолет = dest.airplane,
                 Часы_Полета = dest.flight_hours,
-                Начальный_Аэропорт = dest.start_airport,
-                Конечный_Аэропорт = dest.end_airport,
+               // Начальный_Аэропорт = dest.start_airport,
+             //   Конечный_Аэропорт = dest.end_airport,
                 Дата_Полета = dest.FlightDate,
                 В_Полете = dest.IsFlying
             };
@@ -66,7 +66,7 @@ public partial class MainForm : Form
 
     private void CheckFlight()
     {
-        while (true)
+        /*while (true)
         {
             Thread.Sleep(20000);
             var destinations = Context.Destinations.ToList();
@@ -86,7 +86,7 @@ public partial class MainForm : Form
                     InitializeTables();
                 }
             }
-        }
+        }*/
     }
 
     protected override void OnFormClosing(FormClosingEventArgs e)

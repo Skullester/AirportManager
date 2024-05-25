@@ -9,6 +9,7 @@ public class Context : DbContext
 {
     public Context()
     {
+        // Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
@@ -18,11 +19,22 @@ public class Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite(@"Data Source=airplane.db");
+        // optionsBuilder.UseSqlite(@"Data Source=airplane.db");
+        optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;Database = Airports");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        /*
+            modelBuilder
+                .Entity<Destination>()
+                .HasOne(e => e.end_airport)
+                .WithOne(e => e.
+                .OnDelete(DeleteBehavior.ClientCascade);
+            modelBuilder.Entity<Side>()
+                .HasRequired(s => s.Stage)
+                .WithMany()
+                .WillCascadeOnDelete(false);*/
         modelBuilder.Entity<Airport>(AirportConfigure);
         modelBuilder.Entity<Airplane>(AirplaneConfigure);
     }

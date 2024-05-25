@@ -81,7 +81,7 @@ public partial class AddingFlightForm : Form
         var airplane = comboBox1.SelectedItem as Airplane;
         var date = (DateTime)comboBoxDate.SelectedItem!;
         inFlight.Count++;
-        var newDest = new Destination(airplane.id, outFlight.id, inFlight.id,
+        var newDest = new Destination( /*airplane.id,*/ outFlight.id /*, inFlight.id*/,
             (byte)(inFlight.Distance / airplane.Speed * 2), date);
         if (airplane.MaxDistance < inFlight.Distance)
         {
