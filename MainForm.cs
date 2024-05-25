@@ -31,8 +31,8 @@ public partial class MainForm : Form
             {
                 Самолет = dest.airplane,
                 Часы_Полета = dest.flight_hours,
-               // Начальный_Аэропорт = dest.start_airport,
-             //   Конечный_Аэропорт = dest.end_airport,
+                // Начальный_Аэропорт = dest.start_airport,
+                //   Конечный_Аэропорт = dest.end_airport,
                 Дата_Полета = dest.FlightDate,
                 В_Полете = dest.IsFlying
             };

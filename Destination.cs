@@ -19,11 +19,11 @@ public class Destination
     public DateTime FlightDate { get; set; }
     public bool IsFlying { get; set; }
 
-    public Destination(int airplaneid,/* int start_airportid,*/ /*int end_airportid,*/ byte flight_hours,
+    public Destination(int airplaneid, /* int start_airportid,*/ /*int end_airportid,*/ byte flight_hours,
         DateTime FlightDate)
     {
         this.airplaneid = airplaneid;
-       // this.start_airportid = start_airportid;
+        // this.start_airportid = start_airportid;
         // this.end_airportid = end_airportid;
         this.flight_hours = flight_hours;
         this.FlightDate = FlightDate;

@@ -5,7 +5,7 @@ namespace Airport;
 public class Airplane
 {
     [Key] public int id { get; set; }
-    public Airport? airport { get; set; }
+    public Airport airport { get; set; }
     public int? airportid { get; set; }
 
     public string name { get; set; }

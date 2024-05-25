@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-
 namespace Airport;
 
 internal static class Program
