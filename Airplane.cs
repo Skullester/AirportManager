@@ -10,7 +10,7 @@ public class Airplane
 
     public string name { get; set; }
 
-    //public List<Destination> destination { get; set; }
+    public List<Destination> destination { get; set; }
     public double Speed { get; set; }
     public int MaxDistance { get; set; }
 

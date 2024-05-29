@@ -2,13 +2,12 @@
 
 public partial class AddingFlightForm : Form
 {
-    private Context context;
+    private static Context context = new();
     private readonly MainForm mainForm;
 
     public AddingFlightForm(MainForm mainForm)
     {
         InitializeComponent();
-        context = new();
         InitializeTables();
         InitializeControls();
         this.mainForm = mainForm;

@@ -7,7 +7,7 @@ public class Context : DbContext
 {
     public Context()
     {
-        // Database.EnsureDeleted();
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 

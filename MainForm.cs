@@ -1,4 +1,6 @@
-﻿namespace Airport;
+﻿using Azure.Core;
+
+namespace Airport;
 
 public partial class MainForm : Form
 {
@@ -10,7 +12,6 @@ public partial class MainForm : Form
     {
         InitializeComponent();
         Initialize();
-        InitializeTables();
         foreach (var item in Context.Destinations)
         {
             if (item.FlightDate < DateTime.Now)
@@ -18,9 +19,10 @@ public partial class MainForm : Form
                 item.IsFlying = true;
                 Context.Destinations.Update(item);
                 Context.SaveChanges();
-                InitializeTables();
             }
         }
+
+        InitializeTables();
     }
 
     public void InitializeTables()
@@ -92,6 +94,7 @@ public partial class MainForm : Form
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         thread.Interrupt();
+        Context.Dispose();
     }
 
     private void AddFlight(object sender, EventArgs e)
