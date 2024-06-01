@@ -22,8 +22,5 @@ public class Airplane
         MaxDistance = maxDistance;
     }
 
-    public override string ToString()
-    {
-        return name;
-    }
+    public override string ToString() => name;
 }

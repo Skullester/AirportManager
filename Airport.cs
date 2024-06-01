@@ -8,10 +8,10 @@ public class Airport
     public string name { get; set; }
     public string address { get; set; }
     public List<Airplane> airplanes { get; set; }
-    public int Count { get; set; }
-    public int Distance { get; set; }
+    public int? Count { get; set; }
+    public int? Distance { get; set; }
 
-    public Airport(string name, string address, string INN, int distance)
+    public Airport(string name, string address, string INN, int? distance)
     {
         this.name = name;
         this.address = address;
